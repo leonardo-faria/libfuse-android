@@ -68,12 +68,12 @@ static gid_t oldfsgid;
 
 #ifdef ANDROID
 
-static uid_t setfsuid(uid_t u)
+int  setfsuid(uid_t u)
 {
 	return u;
 }
 
-static gid_t setfsgid(gid_t g)
+int setfsgid(gid_t g)
 {
 	return g;
 }
