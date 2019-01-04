@@ -9,12 +9,7 @@
 #include "config.h"
 #include <pthread.h>
 
-/* Versioned symbols confuse the dynamic linker in uClibc */
-#ifndef __UCLIBC__
-#define FUSE_SYMVER(x) __asm__(x)
-#else
 #define FUSE_SYMVER(x)
-#endif
 
 #ifndef USE_UCLIBC
 #define fuse_mutex_init(mut) pthread_mutex_init(mut, NULL)
