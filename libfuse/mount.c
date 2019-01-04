@@ -14,6 +14,7 @@
 #include "mount_util.h"
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stddef.h>
@@ -259,7 +260,7 @@ static int receive_fd(int fd)
 	}
 
 	cmsg = CMSG_FIRSTHDR(&msg);
-	if (!cmsg->cmsg_type == SCM_RIGHTS) {
+	if (cmsg->cmsg_type != SCM_RIGHTS) {
 		fprintf(stderr, "got control message of unknown type %d\n",
 			cmsg->cmsg_type);
 		return -1;
