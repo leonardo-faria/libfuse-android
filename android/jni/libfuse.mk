@@ -37,7 +37,7 @@ LOCAL_C_INCLUDES := \
 	
 LOCAL_MODULE := libfuse
 
-include $(BUILD_STATIC_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)
 
 
 #fusermount
@@ -66,5 +66,4 @@ LOCAL_STATIC_LIBRARIES := libfuse
 LOCAL_MODULE := fusermount
 
 include $(BUILD_EXECUTABLE)
-
 

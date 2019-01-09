@@ -1,0 +1,11 @@
+prefix=PREFIX
+exec_prefix=${prefix}
+libdir=PREFIX/lib
+includedir=PREFIX/include/fuse
+
+Name: fuse
+Description: Filesystem in Userspace (Android)
+Version: 1.0.0
+Libs: -L${libdir} -lfuse -pthread
+Libs.private: -ldl  
+Cflags: -I${includedir} -D_FILE_OFFSET_BITS=64

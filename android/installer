@@ -1,0 +1,24 @@
+#! /bin/bash
+
+PREFIX=$1
+
+mkdir -p "$PREFIX"
+mkdir -p "$PREFIX/lib"
+mkdir -p "$PREFIX/lib/pkgconfig"
+mkdir -p "$PREFIX/bin"
+mkdir -p "$PREFIX/include"
+mkdir -p "$PREFIX/include/fuse"
+mkdir -p "$PREFIX/include/fuse/old"
+mkdir -p "$PREFIX/include/fuse/sys"
+
+install libs/armeabi-v7a/libfuse.so "$PREFIX/lib"
+
+sed "s@PREFIX@$PREFIX@g" obj/template.pc | tee fuse.pc
+install fuse.pc "$PREFIX/lib/pkgconfig"
+rm fuse.pc
+
+install libs/armeabi-v7a/fusermount "$PREFIX/bin"
+
+install -D ../libfuse/include/*.h "$PREFIX/include/fuse/"
+install -D ../libfuse/include/old/*.h "$PREFIX/include/fuse/old/"
+install -D ../libfuse/include/sys/*.h "$PREFIX/include/fuse/sys/"
